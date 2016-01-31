@@ -16,53 +16,53 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 ### Data files in zipped folder
 * SUBJECT FILES
 
-test/subject_test.txt
+test/subject_test.txt &nbsp;
 train/subject_train.txt
 
 * ACTIVITY FILES
 
-test/X_test.txt
+test/X_test.txt &nbsp;
 train/X_train.txt
 
 * DATA FILES
 
-test/y_test.txt
+test/y_test.txt &nbsp;
 train/y_train.txt
 
 * Name of Column Variables
-features.txt 
+features.txt &nbsp;
 activity_labels.txt
 
 ### Instruction List
 * This reads the train and test data into R
-x_train <- read.table("./UCI HAR Dataset/train/X_train.txt", header = FALSE)
-x_test <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE)
-y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", header = FALSE)
-y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", header = FALSE)
-subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", header = FALSE)
+x_train <- read.table("./UCI HAR Dataset/train/X_train.txt", header = FALSE)&nbsp;
+x_test <- read.table("./UCI HAR Dataset/test/X_test.txt", header = FALSE)&nbsp;
+y_train <- read.table("./UCI HAR Dataset/train/y_train.txt", header = FALSE)&nbsp;
+y_test <- read.table("./UCI HAR Dataset/test/y_test.txt", header = FALSE)&nbsp;
+subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt", header = FALSE)&nbsp;
 subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt", header = FALSE)
 
 * Combines the train and test data for x, y, and subject separately
-x <- rbind(x_train, x_test)
-y <- rbind(y_train, y_test)
+x <- rbind(x_train, x_test)&nbsp;
+y <- rbind(y_train, y_test)&nbsp;
 s <- rbind(subject_train, subject_test)
 
 * Read labels of features into R and then searches for mean and std in each and replaces all matches with more descriptive names
-features <- read.table("./UCI HAR Dataset/features.txt")
-secondcolumn <- grep("-mean\\(\\)|-std\\(\\)", features$V2)
-x <- x[, secondcolumn]
+features <- read.table("./UCI HAR Dataset/features.txt")&nbsp;
+secondcolumn <- grep("-mean\\(\\)|-std\\(\\)", features$V2)&nbsp;
+x <- x[, secondcolumn]&nbsp;
 names(x) <- gsub("\\(|\\)", "", (features[secondcolumn, 2]))
 
 * Read activities and subjects into R, renames columns, and then give descriptive names and then provides a tidy set
-activities <- read.table("./UCI HAR Dataset/activity_labels.txt")
-y[, 1] = activities[y[, 1], 2]
-names(s) <- "Subject"
-names(y) <- "Activity"
+activities <- read.table("./UCI HAR Dataset/activity_labels.txt")&nbsp;
+y[, 1] = activities[y[, 1], 2]&nbsp;
+names(s) <- "Subject"&nbsp;
+names(y) <- "Activity"&nbsp;
 tidy <- cbind(s, y, x)
 
 
 *Creates a 2nd, independent tidy data set with the average of each variable for each activity and each subject with descriptive names:
-p <- tidy[, 3:dim(tidy)[2]] 
-tidytwo <- aggregate(p,list(tidy$Subject, tidy$Activity), mean)
-names(tidytwo)[1] <- "Subject"
+p <- tidy[, 3:dim(tidy)[2]] &nbsp;
+tidytwo <- aggregate(p,list(tidy$Subject, tidy$Activity), mean)&nbsp;
+names(tidytwo)[1] <- "Subject"&nbsp;
 names(tidytwo)[2] <- "Activity"
