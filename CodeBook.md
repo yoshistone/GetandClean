@@ -16,23 +16,23 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 ### Data files in zipped folder
 * SUBJECT FILES
 
-- test/subject_test.txt &nbsp;
-- train/subject_train.txt
+-- test/subject_test.txt &nbsp;
+-- train/subject_train.txt
 
 * ACTIVITY FILES
 
-- test/X_test.txt &nbsp;
-- train/X_train.txt
+-- test/X_test.txt &nbsp;
+-- train/X_train.txt
 
 * DATA FILES
 
-- test/y_test.txt &nbsp;
-- train/y_train.txt
+-- test/y_test.txt &nbsp;
+-- train/y_train.txt
 
 * Name of Column Variables
 
-- features.txt &nbsp;
-- activity_labels.txt
+-- features.txt &nbsp;
+-- activity_labels.txt
 
 ### Instruction List
 * This reads the train and test data into R
@@ -62,7 +62,7 @@ names(y) <- "Activity"&nbsp;
 tidy <- cbind(s, y, x)
 
 
-*Creates a 2nd, independent tidy data set with the average of each variable for each activity and each subject with descriptive names:
+* Creates a 2nd, independent tidy data set with the average of each variable for each activity and each subject with descriptive names:
 p <- tidy[, 3:dim(tidy)[2]] &nbsp;
 tidytwo <- aggregate(p,list(tidy$Subject, tidy$Activity), mean)&nbsp;
 names(tidytwo)[1] <- "Subject"&nbsp;
