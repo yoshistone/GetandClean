@@ -28,8 +28,10 @@ tidy <- cbind(s, y, x)
 
 
 ##Creates a 2nd, independent tidy data set with the average of each variable
-#for each activity and each subject with descriptive names:
+#for each activity and each subject with descriptive names then prints it:
 p <- tidy[, 3:dim(tidy)[2]] 
 tidytwo <- aggregate(p,list(tidy$Subject, tidy$Activity), mean)
 names(tidytwo)[1] <- "Subject"
 names(tidytwo)[2] <- "Activity"
+write.table(tidytwo, file = "tidytwo.txt",row.name=FALSE)
+tidytwo
