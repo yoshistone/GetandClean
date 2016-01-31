@@ -16,21 +16,22 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 ### Data files in zipped folder
 * SUBJECT FILES
 
-test/subject_test.txt &nbsp;
+test/subject_test.txt \\
 train/subject_train.txt
 
 * ACTIVITY FILES
 
-test/X_test.txt &nbsp;
+test/X_test.txt \\
 train/X_train.txt
 
 * DATA FILES
 
-test/y_test.txt &nbsp;
+test/y_test.txt \\
 train/y_train.txt
 
 * Name of Column Variables
-features.txt &nbsp;
+
+features.txt \\
 activity_labels.txt
 
 ### Instruction List
